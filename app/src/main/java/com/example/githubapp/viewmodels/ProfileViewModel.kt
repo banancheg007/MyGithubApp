@@ -4,8 +4,6 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.content.Intent
-import android.content.Intent.getIntent
 import android.util.Log
 import com.example.githubapp.Constants
 import com.example.githubapp.models.GitHubUserResponse
@@ -14,32 +12,32 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserDetailsViewModel(
+class ProfileViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
     private val repository = Repository()
 
-    private val _dataResponse = MutableLiveData<GitHubUserResponse>()
-    val dataResponse: LiveData<GitHubUserResponse> = _dataResponse
+    private val _githubResponse = MutableLiveData<GitHubUserResponse>()
+    val githubResponse: LiveData<GitHubUserResponse> = _githubResponse
 
 
 
     fun makeRequest(position: Int) {
         Log.e("makeRequest", "request")
-        fetchGitHubUser(Constants.userGitHubName[position])
+        fetchUser(Constants.studentGithubLogin[position])
     }
 
     fun makeRequest(user: String){
-        fetchGitHubUser(user)
+        fetchUser(user)
     }
 
-    private fun fetchGitHubUser(user: String) {
+    private fun fetchUser(user: String) {
         repository.getGitHubUser(user).enqueue(object : Callback<GitHubUserResponse> {
             override fun onResponse(call: Call<GitHubUserResponse>, response: Response<GitHubUserResponse>) {
                 if (response.isSuccessful) {
                     Log.e("onResponse", "response")
-                    _dataResponse.value = response.body()
+                    _githubResponse.value = response.body()
                 }
             }
 

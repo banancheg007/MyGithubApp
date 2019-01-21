@@ -4,35 +4,35 @@ class Constants {
 
     companion object {
         val studentList = mutableListOf(
-            "Alex Khomchenko",
-            "Andrey",
-            "Anton Mikhalchenko",
-            "Dmytro Hutsulenko",
-            "Olya Dowgal",
-            "Maria Rudakova",
-            "Mayada Al-Sawah",
             "Ruslan Solodovnyk",
             "Serhii Diachenko",
             "Yurii Konovalov",
             "Yurii Nikolenko",
             "Yuriy Tsapenko",
-            "Volodimir Vlasiuk"
+            "Volodimir Vlasiuk",
+            "Alex Khomchenko",
+            "Andrey Kushch",
+            "Anton Mikhalchenko",
+            "Dmytro Hutsulenko",
+            "Olya Dowgal",
+            "Maria Rudakova",
+            "Mayada Al-Sawah"
         )
 
-        val userGitHubName = mutableListOf(
+        val studentGithubLogin = mutableListOf(
+            "banancheg007",
+            "SerhiDi",
+            "yuriikonovalov",
+            "JethroG",
+            "tsapenkoyuriy",
+            "vvlasiuk",
             "KhomchenkoAlex",
             "andrey241991",
             "shimigasu",
             "boykod",
             "olyadowgal",
             "Neliry",
-            "mayada1994",
-            "banancheg007",
-            "SerhiDi",
-            "yuriikonovalov",
-            "JethroG",
-            "tsapenkoyuriy",
-            "vvlasiuk"
+            "mayada1994"
         )
     }
 

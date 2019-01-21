@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
 import com.example.githubapp.models.AuthorizationResponse
 import com.example.githubapp.network.Repository
 import retrofit2.Call
@@ -24,7 +25,6 @@ class LoginViewModel(
     fun login(email: String, password: String) {
         val base = "$email:$password"
         val authHeader: String = "Basic " + Base64.encodeToString(base.toByteArray(), Base64.NO_WRAP)
-        Log.d("my", authHeader)
         authorization(authHeader)
     }
 
@@ -37,6 +37,9 @@ class LoginViewModel(
             override fun onResponse(call: Call<AuthorizationResponse>, response: Response<AuthorizationResponse>) {
                 if (response.isSuccessful) {
                     _authResponse.value = response.body()!!
+                    Toast.makeText(getApplication(),"Login successful", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(getApplication(), "Wrong credentials", Toast.LENGTH_SHORT).show()
                 }
             }
 

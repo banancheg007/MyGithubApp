@@ -8,14 +8,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.example.githubapp.R
-import com.example.githubapp.viewmodels.UserDetailsViewModel
+import com.example.githubapp.viewmodels.ProfileViewModel
 import com.example.githubapp.models.GitHubUserResponse
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_user_details.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
-class UserDetailsActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
-    lateinit var userDetailsViewModel: UserDetailsViewModel
+    lateinit var profileViewModel: ProfileViewModel
 
     companion object {
         lateinit var userPageUrl: String
@@ -23,47 +23,47 @@ class UserDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_details)
+        setContentView(R.layout.activity_profile)
 
-        userDetailsViewModel = ViewModelProviders.of(this).get(UserDetailsViewModel::class.java)
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
         getIntents()
 
         user_login.setOnClickListener {
-            openPageInWeb(userPageUrl)
+            openLink(userPageUrl)
         }
 
-        userDetailsViewModel.dataResponse.observe(this, Observer {
-            showUserInfo(it!!)
+        profileViewModel.githubResponse.observe(this, Observer {
+            showDetails(it!!)
         })
     }
 
     private fun getIntents() {
-        val position: Int = intent.getIntExtra("POSITION", 0)
+        val position: Int = intent.getIntExtra("adapter_position", 55)
         if (intent.data != null) {
             val data: String = intent.data.path.drop(1)
-            Log.e("data", data)
-            userDetailsViewModel.makeRequest(data)
+            profileViewModel.makeRequest(data)
         }else {
-            Log.e("getIntents()", "intent $position")
-            userDetailsViewModel.makeRequest(position)
+            profileViewModel.makeRequest(position)
         }
     }
 
-    private fun openPageInWeb(url: String) {
+    private fun openLink(url: String) {
         val openLinkIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         openLinkIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(openLinkIntent)
     }
 
-    private fun showUserInfo(userResponse: GitHubUserResponse) {
-        Log.e("getUserDetails", "user ${userResponse.login}")
+    private fun showDetails(userResponse: GitHubUserResponse) {
         user_name.text = userResponse.name
+        user_id.text = userResponse.id.toString()
+        user_gists.text = userResponse.gists.toString()
+        user_url.text = userResponse.url
         user_login.text = "${userResponse.login}"
-        user_repository.text = userResponse.repository.toString()
+        user_repository.text = userResponse.repositories.toString()
         user_followers.text = userResponse.followers.toString()
         user_following.text = userResponse.following.toString()
-        userPageUrl = userResponse.pageUrl
+        userPageUrl = userResponse.url
 
         Picasso.get().load(userResponse.avatar).into(user_photo_url)
     }

@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/background"
-        tools:context=".activities.UserDetailsActivity">
+        tools:context=".activities.ProfileActivity">
 
     <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -19,13 +19,11 @@
                 android:layout_height="150dp"
                 android:background="#333"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
                 android:id="@+id/user_photo_url"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:src="@mipmap/ic_launcher"
-                app:civ_border_width="4dp"
-                app:civ_border_color="#ffffff"
                 app:layout_anchorGravity="bottom|center"
                 app:layout_anchor="@+id/frameLayout"/>
 
@@ -38,14 +36,65 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-            android:text="@string/user_name_text_view"/>
+            android:text="Profile"/>
 
     <TextView
             android:id="@+id/user_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/login_text_view"/>
+            android:text="NOT"/>
+    <TextView
+            android:id="@+id/user_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoLink="web"
+            android:text="FOUND"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/user_id"
+                    style="@style/InformationPanel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:text="@string/default_value"/>
+
+            <TextView
+                    style="@style/InformationPanel"
+                    android:text="@string/id_text_view"
+                    android:textAllCaps="true"/>
+        </LinearLayout>
+
+        <TextView
+                style="@style/VerticalLine"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/user_gists"
+                    style="@style/InformationPanel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:text="@string/default_value"/>
+
+            <TextView
+                    style="@style/InformationPanel"
+                    android:text="@string/gists_text_view"
+                    android:textAllCaps="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
             android:layout_width="match_parent"

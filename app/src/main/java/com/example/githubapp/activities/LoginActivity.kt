@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Toast
 import com.example.githubapp.R
 import com.example.githubapp.viewmodels.LoginViewModel
@@ -20,14 +21,13 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
-        login_button.setOnClickListener {
-            val email: String = user_name_login_et.text.toString()
-            val password: String = user_password_login_et.text.toString()
+        login_btn.setOnClickListener {
+            val email: String = login_et.text.toString()
+            val password: String = password_et.text.toString()
             loginViewModel.login(email, password)
         }
 
         loginViewModel.authorizationResponse.observe(this, Observer {
-            Toast.makeText(this, "Authorize as: ${it?.login}", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         })
 

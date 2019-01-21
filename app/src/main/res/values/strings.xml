@@ -6,4 +6,7 @@
     <string name="following_text_view">following</string>
     <string name="followers_text_view">followers</string>
     <string name="repository_text_view">repository</string>
+    <string name="gists_text_view">gists</string>
+    <string name="id_text_view">id</string>
+    <string name="url_text_view">url</string>
 </resources>
