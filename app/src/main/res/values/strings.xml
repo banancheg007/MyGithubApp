@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Github profile viewer</string>
+    <string name="user_name_text_view">User Name</string>
+    <string name="login_text_view">#login</string>
+    <string name="default_value">0</string>
+    <string name="following_text_view">following</string>
+    <string name="followers_text_view">followers</string>
+    <string name="repository_text_view">repository</string>
+</resources>

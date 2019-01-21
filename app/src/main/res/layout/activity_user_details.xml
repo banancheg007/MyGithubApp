@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        tools:context=".activities.UserDetailsActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+        <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#333"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_photo_url"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_width="4dp"
+                app:civ_border_color="#ffffff"
+                app:layout_anchorGravity="bottom|center"
+                app:layout_anchor="@+id/frameLayout"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:text="@string/user_name_text_view"/>
+
+    <TextView
+            android:id="@+id/user_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/login_text_view"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/user_repository"
+                    style="@style/InformationPanel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:text="@string/default_value"/>
+
+            <TextView
+                    style="@style/InformationPanel"
+                    android:text="@string/repository_text_view"
+                    android:textAllCaps="true"/>
+        </LinearLayout>
+
+        <TextView
+                style="@style/VerticalLine"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/user_followers"
+                    style="@style/InformationPanel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:text="@string/default_value"/>
+
+            <TextView
+                    style="@style/InformationPanel"
+                    android:text="@string/followers_text_view"
+                    android:textAllCaps="true"/>
+        </LinearLayout>
+
+        <TextView
+                style="@style/VerticalLine"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/user_following"
+                    style="@style/InformationPanel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:text="@string/default_value"/>
+
+            <TextView
+                    style="@style/InformationPanel"
+                    android:text="@string/following_text_view"
+                    android:textAllCaps="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
