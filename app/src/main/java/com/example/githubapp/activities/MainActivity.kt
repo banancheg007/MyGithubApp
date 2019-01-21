@@ -32,8 +32,8 @@ class MainActivity : MvpAppCompatActivity() {
 
 
     private fun startDetailActivity(intentExtra: Int) {
-        val intent = Intent(this@MainActivity, UserDetailsActivity::class.java)
-        intent.putExtra("POSITION", intentExtra)
+        val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+        intent.putExtra("adapter_position", intentExtra)
         startActivity(intent)
     }
 

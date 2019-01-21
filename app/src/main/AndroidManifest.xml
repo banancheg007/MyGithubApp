@@ -15,7 +15,7 @@
                   android:theme="@style/AnimationActivity"
                   android:label="@string/app_name"/>
 
-        <activity android:name=".activities.UserDetailsActivity"
+        <activity android:name=".activities.ProfileActivity"
                   android:theme="@style/AnimationActivity"
                   android:parentActivityName=".activities.MainActivity"
                   android:label="@string/app_name">
